@@ -7,7 +7,8 @@ SOURCE_REPO="https://github.com/QEF/q-e.git"
 # We pretend that the $SOURCE_FILE is there, even though it's actually a dir.
 SOURCE_FILE=$NAME
 module load ci
-module add gcc/4.8.2
+module load gcc/4.8.2
+
 
 echo "REPO_DIR is "
 echo $REPO_DIR
@@ -39,6 +40,6 @@ fi
 cp -rf $SRC_DIR/$SOURCE_FILE $WORKSPACE
 cd $WORKSPACE/$NAME
 echo "Configuring the build"
-./configure --prefix $SOFT_DIR
+./configure --prefix=${SOFT_DIR} --enable-parallel --enable-shared --enable-environment
 echo "Running the build"
 make -j 8 all
