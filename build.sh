@@ -35,7 +35,7 @@ else
 fi
 # this is the equivalent of a git pull :
 # tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
-cd $WORKSPACE/$NAME-$VERSION
+cd $WORKSPACE/$NAME
 echo "Configuring the build"
 ./configure --prefix $SOFT_DIR
 echo "Running the build"
