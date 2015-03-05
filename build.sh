@@ -40,4 +40,4 @@ cd $WORKSPACE/$NAME
 echo "Configuring the build"
 ./configure --prefix $SOFT_DIR
 echo "Running the build"
-make -j 8
+make -j 8 all
