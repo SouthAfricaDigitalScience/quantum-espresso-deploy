@@ -42,4 +42,4 @@ cd $WORKSPACE/$NAME
 echo "Configuring the build"
 FC=`which gfortran` MPIF90="/usr/lib64/openmpi/bin/mpif90" ./configure --prefix=${SOFT_DIR} --enable-parallel --enable-shared --enable-environment
 echo "Running the build"
-make -j8 all
+make all
