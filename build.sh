@@ -39,6 +39,8 @@ fi
 # tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cp -rf $SRC_DIR/$SOURCE_FILE $WORKSPACE
 cd $WORKSPACE/$NAME
+echo "cleaning up previous builds"
+make distclean
 echo "Configuring the build"
 FC=`which gfortran` MPIF90="/usr/lib64/openmpi/bin/mpif90" ./configure --prefix=${SOFT_DIR} --enable-parallel --enable-shared --enable-environment
 echo "Running the build"
