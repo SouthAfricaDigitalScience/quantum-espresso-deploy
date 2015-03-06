@@ -8,7 +8,7 @@ SOURCE_REPO="https://github.com/QEF/q-e.git"
 SOURCE_FILE=$NAME
 module load ci
 #module load gcc/4.8.2
-module add fftw3
+module add fftw
 
 echo "REPO_DIR is "
 echo $REPO_DIR
