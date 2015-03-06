@@ -8,6 +8,7 @@ SOURCE_REPO="https://github.com/QEF/q-e.git"
 SOURCE_FILE=$NAME
 module load ci
 module load gcc/4.8.2
+module add fftw3
 
 
 echo "REPO_DIR is "
@@ -42,4 +43,4 @@ cd $WORKSPACE/$NAME
 echo "Configuring the build"
 ./configure --prefix=${SOFT_DIR} --enable-parallel --enable-shared --enable-environment
 echo "Running the build"
-make -j 8 all
+make all
