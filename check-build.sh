@@ -35,3 +35,8 @@ cp modules/$VERSION $LIBRARIES_MODULES/$NAME
 module avail
 module list
 module add $NAME
+which xspectra.x
+
+cd $WORKSPACE/$NAME/atomic/examples/all-electron
+./test-job
+ls out
