@@ -24,9 +24,9 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       QE_VERSION       $VERSION
 setenv       QE_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path PATH              $::env(QE_DIR)/bin
-prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/lib
-prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/include
+prepend-path PATH              $::env(QE_DIR)/
+prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/
+prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/
 MODULE_FILE
 ) > modules/$VERSION
 mkdir -p $LIBRARIES_MODULES/$NAME
