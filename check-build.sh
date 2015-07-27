@@ -39,4 +39,4 @@ which xspectra.x
 
 cd $WORKSPACE/$NAME/atomic/examples/all-electron
 ./test.job
-ls out
+cat results/h.out
