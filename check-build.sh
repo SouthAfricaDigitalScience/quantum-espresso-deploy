@@ -38,5 +38,5 @@ module add $NAME
 which xspectra.x
 
 cd $WORKSPACE/$NAME/atomic/examples/all-electron
-./test-job
+./test.job
 ls out
