@@ -43,7 +43,7 @@ else
 fi
 # this is the equivalent of a git pull :
 # tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
-cp -rf ${SRC_DIR}/${SOURCE_FILE} ${WORKSPACE}
+cp -rf ${SRC_DIR}/${SOURCE_FILE} ${WORKSPACE} --no-clobber
 cd ${WORKSPACE}/${NAME}
 echo "cleaning up previous builds"
 make distclean
