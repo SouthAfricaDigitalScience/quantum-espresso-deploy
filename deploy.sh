@@ -4,7 +4,7 @@
 echo ${SOFT_DIR}
 module add deploy
 echo ${SOFT_DIR}
-cd ${WORKSPACE}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 FC=`which gfortran` MPIF90=`which mpif90` ./configure \
 --prefix=${SOFT_DIR} \
