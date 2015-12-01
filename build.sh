@@ -24,9 +24,9 @@ mkdir -p ${SOFT_DIR}
 # since it's from SCM, should be done in ${WORKSPACE} instead of ${SRC_DIR}, but whatever
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
-  echo "seems like this is the first build - doing a git clone  https://github.com/QEF/q-e.git ${SRC_DIR}/${SOURCE_FILE}"
+  echo "seems like this is the first build - doing a git clone  https://github.com/SouthAfricaDigitalScience/q-e.git ${SRC_DIR}/${SOURCE_FILE}"
   mkdir -p ${SRC_DIR}
-  git clone https://github.com/QEF/q-e.git ${SRC_DIR}/${SOURCE_FILE}
+  git clone https://github.com/SouthAfricaDigitalScience/q-e.git ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
