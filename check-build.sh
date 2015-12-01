@@ -34,7 +34,3 @@ module avail
 module list
 module add ${NAME}
 which xspectra.x
-
-cd ${WORKSPACE}/${NAME}/atomic/examples/all-electron
-./test.job
-cat results/h.out
