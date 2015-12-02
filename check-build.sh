@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 . /etc/profile.d/modules.sh
 module load ci
 echo "About to make the modules"
