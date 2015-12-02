@@ -36,13 +36,6 @@ elif [ -e ${WORKSPACE}/${SOURCE_FILE}.lock ] ; then
   done
 else
   echo "continuing from previous builds, using source at " ${WORKSPACE}/${SOURCE_FILE}
-  cd ${WORKSPACE}/${SOURCE_FILE}
-  echo "claiming the pull"
-  touch  ${WORKSPACE}/${SOURCE_FILE}.lock
-  echo "Doing a git pull..."
-  git pull
-  echo "releasing lock"
-  rm -v ${WORKSPACE}/{SOURCE_FILE}.lock
 fi
 cd ${WORKSPACE}/${NAME}
 echo "cleaning up previous builds"
