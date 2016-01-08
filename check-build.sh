@@ -1,6 +1,11 @@
 #!/bin/bash
 . /etc/profile.d/modules.sh
-module load ci
+module module add ci
+module add gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add openblas/0.2.15-gcc-${GCC_VERSION}
+
 echo "About to make the modules"
 cd ${WORKSPACE}/${NAME}
 ls

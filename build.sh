@@ -7,7 +7,11 @@
 SOURCE_REPO="https://github.com/QEF/q-e.git"
 # We pretend that the $SOURCE_FILE is there, even though it's actually a dir.
 SOURCE_FILE=${NAME}
-module load ci
+module module add ci
+module add gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add openblas/0.2.15-gcc-${GCC_VERSION}
 
 
 echo "REPO_DIR is ${REPO_DIR}"
@@ -41,12 +45,17 @@ cd ${WORKSPACE}/${NAME}
 echo "cleaning up previous builds"
 make distclean
 echo "Configuring the build for no parallel"
-FC=`which gfortran` MPIF90=`which mpif90` ./configure \
+export FC=`which gfortran`
+export MPIF90=`which mpif90`
+export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include"
+export LAPACK_LIBS="-L${OPENBLAS_DIR}/lib -llapack -lblas"
+# QE doesn't like to be compiled out of source
+./configure \
 --prefix=${SOFT_DIR} \
---enable-parallel=no \
+--enable-parallel \
 --enable-shared \
 --enable-environment \
---with-internal-blas \
---with-internal-lapack
+--enable-signals \
+
 echo "Running the build"
 make -j2 all
