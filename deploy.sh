@@ -3,16 +3,22 @@
 . /etc/profile.d/modules.sh
 echo ${SOFT_DIR}
 module add deploy
+module add  gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add openblas/0.2.15-gcc-${GCC_VERSION}
+
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-FC=`which gfortran` MPIF90=`which mpif90` ./configure \
---prefix=${SOFT_DIR} \
---enable-parallel=no \
+export FC=`which gfortran`
+export MPIF90=`which mpif90`
+./configure \
+--prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
+--enable-parallel \
 --enable-shared \
 --enable-environment \
---with-internal-blas \
---with-internal-lapack
+--enable-signals
 
 make -j2 install
 echo "Creating the modules file directory "

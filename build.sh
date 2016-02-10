@@ -7,7 +7,7 @@
 SOURCE_REPO="https://github.com/QEF/q-e.git"
 # We pretend that the $SOURCE_FILE is there, even though it's actually a dir.
 SOURCE_FILE=${NAME}
-module module add ci
+module add ci
 module add gcc/${GCC_VERSION}
 module add openmpi/1.8.8-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
@@ -51,11 +51,11 @@ export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include"
 export LAPACK_LIBS="-L${OPENBLAS_DIR}/lib -llapack -lblas"
 # QE doesn't like to be compiled out of source
 ./configure \
---prefix=${SOFT_DIR} \
+--prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
 --enable-shared \
 --enable-environment \
---enable-signals \
+--enable-signals
 
 echo "Running the build"
 make -j2 all

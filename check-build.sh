@@ -1,6 +1,6 @@
 #!/bin/bash
 . /etc/profile.d/modules.sh
-module module add ci
+module add ci
 module add gcc/${GCC_VERSION}
 module add openmpi/1.8.8-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
