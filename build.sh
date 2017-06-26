@@ -58,4 +58,4 @@ export LAPACK_LIBS="-L${OPENBLAS_DIR}/lib -llapack -lblas"
 --enable-signals
 
 echo "Running the build"
-make -j2 all
+make all
