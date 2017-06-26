@@ -32,10 +32,10 @@ prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/
 MODULE_FILE
 ) > modules/${VERSION}-gcc-${GCC_VERSION}
-mkdir -p ${CHEMISTRY_MODULES}/${NAME}
-cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${CHEMISTRY_MODULES}/${NAME}
+mkdir -p ${CHEMISTRY}/${NAME}
+cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${CHEMISTRY}/${NAME}
 
-module avail
+module avail ${NAME}
 module list
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
 module list

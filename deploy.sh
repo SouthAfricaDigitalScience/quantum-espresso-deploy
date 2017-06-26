@@ -22,7 +22,7 @@ export MPIF90=`which mpif90`
 
 make -j2 install
 echo "Creating the modules file directory "
-mkdir -p ${CHEMISTRY_MODULES}/${NAME}
+mkdir -p ${CHEMISTRY}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -33,11 +33,11 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 
-module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/gmp-deploy"
+module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/quantum-espresso-deploy"
 setenv       QE_VERSION       $VERSION
 setenv       QE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)
 prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/lib
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/include
 prepend-path PATH             $::env(QE_DIR)
 MODULE_FILE
-) > ${CHEMISTRY_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
