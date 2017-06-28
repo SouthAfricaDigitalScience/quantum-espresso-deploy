@@ -13,6 +13,8 @@ cd ${WORKSPACE}/${NAME}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export FC=`which gfortran`
 export MPIF90=`which mpif90`
+export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include -I${LAPACK_DIR}/include"
+export LAPACK_LIBS="-L${LAPACK_DIR}/lib -L${LAPACK_DIR}/lib64 -L${OPENBLAS_DIR}/lib -llapack -lblas"
 ./configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \

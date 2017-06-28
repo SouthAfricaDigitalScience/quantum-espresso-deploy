@@ -47,8 +47,8 @@ make distclean
 echo "Configuring the build for no parallel"
 export FC=`which gfortran`
 export MPIF90=`which mpif90`
-export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include"
-export LAPACK_LIBS="-L${OPENBLAS_DIR}/lib -llapack -lblas"
+export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include -I${LAPACK_DIR}/include"
+export LAPACK_LIBS="-L${LAPACK_DIR}/lib -L${LAPACK_DIR}/lib64 -L${OPENBLAS_DIR}/lib -llapack -lblas"
 # QE doesn't like to be compiled out of source
 ./configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
