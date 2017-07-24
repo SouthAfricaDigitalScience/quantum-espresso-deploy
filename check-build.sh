@@ -26,7 +26,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION. See https://github.com/SouthAfricaDigitalScience/quantum-espresso-deploy"
 setenv       QE_VERSION       $VERSION
-setenv       QE_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)
+setenv       QE_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)-mpi-${OPENMPI_VERSION}
 prepend-path PATH              $::env(QE_DIR)/
 prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/
@@ -37,6 +37,6 @@ cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${CHEMISTRY}/${NAME}
 
 module avail ${NAME}
 module list
-module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module list
 which xspectra.x

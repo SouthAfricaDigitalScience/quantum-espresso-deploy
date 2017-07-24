@@ -36,10 +36,22 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/quantum-espresso-deploy"
+module add  gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add lapack/3.6.0-gcc-${GCC_VERSION}
+
 setenv       QE_VERSION       $VERSION
-setenv       QE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)
+setenv       QE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)-mpi-${OPENMPI_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/lib
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/include
 prepend-path PATH             $::env(QE_DIR)
 MODULE_FILE
 ) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+
+module avail ${NAME}
+
+module  purge
+module add deploy
+module  add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+which xspectra.x
