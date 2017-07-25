@@ -52,7 +52,5 @@ MODULE_FILE
 
 module avail ${NAME}
 
-module  purge
-module add deploy
 module  add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 which xspectra.x
