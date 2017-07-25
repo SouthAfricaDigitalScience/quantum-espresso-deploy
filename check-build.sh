@@ -25,15 +25,21 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION. See https://github.com/SouthAfricaDigitalScience/quantum-espresso-deploy"
+
+module add gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add lapack/3.6.0-gcc-${GCC_VERSION}
+
 setenv       QE_VERSION       $VERSION
 setenv       QE_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$::env(GCC_VERSION)-mpi-${OPENMPI_VERSION}
 prepend-path PATH              $::env(QE_DIR)/
 prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/
 MODULE_FILE
-) > modules/${VERSION}-gcc-${GCC_VERSION}
+) > modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 mkdir -p ${CHEMISTRY}/${NAME}
-cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${CHEMISTRY}/${NAME}
+cp -v modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${CHEMISTRY}/${NAME}
 
 module avail ${NAME}
 module list
