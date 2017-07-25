@@ -15,6 +15,7 @@ export FC=`which gfortran`
 export MPIF90=`which mpif90`
 export FCFLAGS="$CFLAGS -I${FFTW_DIR}/include -I${OPENBLAS_DIR}/include -I${LAPACK_DIR}/include"
 export LAPACK_LIBS="-L${LAPACK_DIR}/lib -L${LAPACK_DIR}/lib64 -L${OPENBLAS_DIR}/lib -llapack -lblas"
+export LDFLAGS="-L${LAPACK_DIR}/lib -L${LAPACK_DIR}/lib64"
 ./configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
@@ -47,7 +48,7 @@ prepend-path LD_LIBRARY_PATH   $::env(QE_DIR)/lib
 prepend-path GCC_INCLUDE_DIR   $::env(QE_DIR)/include
 prepend-path PATH             $::env(QE_DIR)
 MODULE_FILE
-) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 module avail ${NAME}
 
